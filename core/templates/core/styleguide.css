@@ -1,0 +1,57 @@
+/* Variables */
+:root{
+    --black: rgba(0,0,0,1);
+    --primary: rgba(2, 81, 98,1);
+    --eerie-black: rgba(30,30,30,1);
+    --secondary-3: rgba(64,64,64,1);
+    --alto: rgba(217,219,225,1);
+    --trinidad: rgba(230, 82,19,1);
+    --tertiary: rgba(231,83,19,1);
+    --secondary: rgba(234, 223, 216, 1);
+    --white: rgba(255,255,255,1);
+
+    --font-size-xxxs: 14px;
+    --font-size-xxs: 16px;
+    --font-size-xs: 16.7px;
+    --font-size-xxl: 32.5px;
+    --font-size-s2: 18px;
+    --font-size-m2: 20px;
+    --font-size-l2: 25.1px;
+    --font-size-xl2: 70px;
+
+    --font-family-manrope: "Manrope";
+    --font-family-montserrat: "Montserrat"
+}
+
+/* Classes */
+.montserrat-normal-cape-code-18px{
+    color: var(--secondary-3);
+    font-family: var(--font-family-montserrat);
+    font-size: var(--font-size-s2);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.manrope-extra-bold-blue-stone-70px{
+    color: 
+    font-family: 
+    font-size: 
+    font-weight: 
+    font-style: normal;
+}
+
+.manrope-medium-white-20px{
+    color: 
+    font-family: 
+    font-size: 
+    font-weight: 
+    font-style: normal;
+}
+
+.montserrat-normal-black-18px{
+    color: 
+    font-family: 
+    font-size: 
+    font-weight: 
+    font-style: normal;
+}
