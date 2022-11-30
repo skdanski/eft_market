@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load menu %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{category.title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static '/stylesheet.css' %}">
+    </head>
+    <body>
+        <div class ="homepage screen">
+            <div class="nav-bars">
+                <div class="content">
+                    <div class="left-column">
+                        <div class="logo manrope-bold-black-32-5px">
+                            <a href="{% url 'mainpage' %}" style="text-decoration: none">
+                                <span class="manrope-bold-black-32-5px">EFT_MARKET</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <div class="item-2">My Account</div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-bar">
+                {% menu %}
+                <div class ="right-column-1">
+                    <div class="frame-19">
+                        <img class="group" src="{% static 'images/search.png' %}" alt="search-icon" />
+                        <div class="label-2">Search</div>
+                    </div>
+                    <img class="vector" src="{% static '/images/wishlist.png' %}" alt="Vector"/>
+                    <div class="group-20">
+                        <div class="overlap-group">
+                            <img class="group-1" src="{% static '/images/bag.png' %}" alt="Group" />
+                            <div class="rectangle-14"></div>
+                            <div class="number">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="recommended">
+                <div class="products">
+                    {% for product in products %}
+                        <div class="product-card">
+                            <img class="mask-group" src="{% static '/images/bigpipe.png' %}" width=300 alt="Mask group" />
+                            <div class="icon-details-1">
+                                <div class="details-1">
+                                    <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
+                                </div>
+                            </div>
+                            <a href="{% url 'product_details' product.category.slug product.slug %}">
+                                <div class="button-1">
+                                    <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
+                                    <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="footer">
+                <div class="body">
+                    <div class="1">
+                        <div class="logo-1">
+                            <div class="footertitle">EFT_Market</div>
+                        </div>
+                        <div class="about">
+                            <div class="place manrope-normal-alto-14px">Contact</div>
+                        </div>
+                        <!-- todo: img src -->
+                        <img class="social-links" src="{% static '/images/instagram.png' %}" alt="Social Links" />
+                        <img class="social-links" src="{% static '/images/twitter.png' %}" alt="Social Links" />
+                        <div class="copyright manrope-normal-alto-14px">©EFT_Market 2022</div>
+                    </div>
+                    <div class="footer-info">
+                        <div class="col-1">
+                            <div class="info manrope-medium-white-20px">Info</div>
+                            <div class="list-items">
+                                <div class="privacy-policy manrope-normal-alto-16px">Privacy Policy</div>
+                                <div class="terms-conditions manrope-normal-alto-16px">Terms &amp; Conditions</div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="help manrope-medium-white-20px">Help</div>
+                            <div class="list-items-1">
+                                <div class="client-support-csti manrope-normal-alto-16px">
+                                    Client Support: <br/>
+                                    csticket@eftmarket.com<br/>
+                                    02-123-1234
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div> {% comment %} end homepage div {% endcomment %}
+    
+    </body>
+</html>

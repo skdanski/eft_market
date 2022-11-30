@@ -583,7 +583,7 @@ url("https://fonts.googleapis.com/css?family=Manrope:400,700,500,600,800|Montser
     flex-direction: column;
     gap: 64px;
     padding: 96px 112px;
-    width: 1440px;
+    width: 70.62%;
 }
 .body{
     align-items: flex-start;
@@ -601,8 +601,9 @@ url("https://fonts.googleapis.com/css?family=Manrope:400,700,500,600,800|Montser
     width: 489px;
 }
 .social-links{
-    height: 32px;
-    min-width: 176px;
+    align-items: flex-start;
+    height: 24px;
+    width: 24px;
 }
 .copyright{
     letter-spacing: 0;
@@ -615,7 +616,7 @@ url("https://fonts.googleapis.com/css?family=Manrope:400,700,500,600,800|Montser
     min-width: 192px;
     position: relative;
 }
-.lenslove{
+.footertitle{
     color: var(--secondary);
     font-family: var(--font-family-manrope);
     font-size: var(--font-size-xxl);
@@ -642,7 +643,7 @@ url("https://fonts.googleapis.com/css?family=Manrope:400,700,500,600,800|Montser
     white-space: nowrap;
     width: 350px;
 }
-.r{
+.footer-info{
     align-items: flex-start;
     border: 1px none;
     display: flex;
@@ -681,7 +682,7 @@ url("https://fonts.googleapis.com/css?family=Manrope:400,700,500,600,800|Montser
     width: 160px;
 }
 .col-1{
-    align-items: felx-start;
+    align-items: flex-start;
     border: 1px none;
     display: flex;
     flex-direction: column;

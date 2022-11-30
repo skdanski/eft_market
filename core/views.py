@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from store.models import Product
 
-# Create your views here.
+
 def mainpage(request):
-    return render(request, r'C:\Users\skdan\Documents\2022_Fall\웹프실\final_project\eft_market\core\templates\core\mainpage.html')
+    products = Product.objects.all()[0:4]
+    return render(request, 'core/mainpage.html', {
+        'products': products
+    })
