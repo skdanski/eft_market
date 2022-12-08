@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{product.title}}</title>
+        <title>Login</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{% static '/stylesheet.css' %}">
@@ -36,8 +36,10 @@
                 {% menu %}
                 <div class ="right-column-1">
                     <div class="frame-19">
-                        <img class="group" src="{% static 'images/search.png' %}" alt="search-icon" />
-                        <div class="label-2">Search</div>
+                        <a href="{% url 'search' %}">
+                            <img class="group" src="{% static 'images/search.png' %}" alt="search-icon"/>
+                            <span class="label-2">Search</span>
+                        </a>
                     </div>
                     <img class="vector" src="{% static '/images/wishlist.png' %}" alt="Vector"/>
                     <div class="group-20">
@@ -49,36 +51,20 @@
                     </div>
                 </div>
             </div>
-            <div class="photo-text-section" style="padding: 60px">
-                {% comment %} todo: get usr uploaded item image {% endcomment %}
-                {%if product.image %}
-                    <img class="img" src="{{product.image.url}}" alt="image-of-{{product.title}}" />
-                {% endif %}
-                <div class="text-1" style="padding: 50px">
-                    <div class="title-and-text" style="gap: 8px">
-                        <a href="{% url 'seller_detail' product.user.id %}">
-                        <div class="headline-1 montserrat-normal-cape-code-18px">Seller: <em>{{product.user.username}}</em></div>
+            <div class="recomanded" style="padding: 50px; gap: 0px">
+                <h1 class="manrope-bold-black-32-5px" style="align-item: center"> Welcome! </h1>
+                <form method="post" action="." class="manrope-bold-cape-cod-20px">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button class="button" style="padding: 8px 16px;">
+                        <span class="manrope-bold-cape-cod-20px">Login</span>
+                    </button>
+                    <hr>
+                    <a href="{% url 'signup' %}" class="button" style="padding: 8px 16px; position: absolute; display: inline;">
+                        <span class="manrope-bold-cape-cod-20px">Sign Up</span>
                     </a>
-                        <div>
-                            <hr class="hr-1">
-                        </div>
-                        <div class="headline-1 manrope-extra-bold-black-40px">{{product.title}}</div>
-                        <p class="description manrope-bold-black-32-5px">
-                            ${{product.get_display_price}}
-                        </p>
-                        <p class="description montserrat-normal-black-18px">
-                            {{product.description}}
-                        </p>
-                    </div>
-                    <div class="button-1">
-                        <div class="label-1 manrope-bold-trinidad-20px">Bid Now</div>
-                        {% comment %} todo: implement bid button {% endcomment %}
-                    </div>
-                </div>
+                </form>
             </div>
-
-
-
             <div class="footer">
                 <div class="body">
                     <div class="1">
@@ -114,6 +100,4 @@
                     </div>
                 </div> 
             </div>
-        </div> {% comment %} end homepage div {% endcomment %}
-    </body>
-</html>
+        </div>{% comment %}end of homepage screen {% endcomment %}

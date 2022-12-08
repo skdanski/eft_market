@@ -19,6 +19,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True)
     price = models.IntegerField()
+    image = models.ImageField(upload_to='uploads/product_images/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
         
@@ -27,3 +28,4 @@ class Product(models.Model):
 
     def get_display_price(self):
         return self.price / 100
+    

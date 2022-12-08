@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{%load menu %}
+{% load menu %}
 {% load static %}
 <html>
     <head>
@@ -23,7 +23,13 @@
                         </div>
                     </div>
                     <div class="right-column">
-                        <div class="item-2">My Account</div>
+                        <div class="item-2">
+                            {%if request.user.is_authenticated == True%}
+                            <a href="{% url 'myaccount' %}" style="color: black; text-decoration: none">My Account</a>
+                            {% else %}
+                            <a href="{% url 'login' %}" style="color: black; text-decoration: none">My Account</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -31,8 +37,10 @@
                 {% menu %}
                 <div class ="right-column-1">
                     <div class="frame-19">
-                        <img class="group" src="{% static 'images/search.png' %}" alt="search-icon" />
-                        <div class="label-2">Search</div>
+                        <a href="{% url 'search' %}">
+                            <img class="group" src="{% static 'images/search.png' %}" alt="search-icon"/>
+                            <span class="label-2">Search</span>
+                        </a>
                     </div>
                     <img class="vector" src="{% static '/images/wishlist.png' %}" alt="Vector"/>
                     <div class="group-20">
@@ -157,56 +165,24 @@
                 <div class="popular valign-text-middle manrope-extra-bold-cape-cod-70px">New</div>
                 <div class="recommended">
                     <div class="products">
-                        <div class="product-card">
-                            <img class="mask-group" src="{% static '/images/bigpipe.png' %}" width=300 alt="Mask group" />
-                            <div class="icon-details-1">
-                                <div class="details-1">
-                                    <p class="headline manrope-semi-bold-cape-cod-25-1px">{{products.0.title}}</p> 
+                        {% for product in products|slice:"0:4" %}
+                            <div class="product-card">
+                                {% if product.image %}
+                                <img class="mask-group" src="{{product.image.url}}" width=300 alt="Mask group" />
+                                {%endif%}
+                                <div class="icon-details-1">
+                                    <div class="details-1">
+                                        <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
+                                    </div>
                                 </div>
+                                <a href="{% url 'product_details' product.category.slug product.slug %}">
+                                    <div class="button-1">
+                                        <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
+                                        <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
+                                    </div>
+                                </a>
                             </div>
-                            <a href="{% url 'product_details' products.0.category.slug products.0.slug %}">
-                                <div class="button-1">
-                                    <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                    <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-card">
-                            <img class="mask-group" src="{% static '/images/bm3.png' %}" width="300" alt="Mask group"/> 
-                            <div class="icon-details-1">
-                                <div class="details-1">
-                                    <p class="headline manrope-semi-bold-cape-cod-25-1px">{{products.1.title}}</p>
-                                </div>
-                            </div>
-                            <div class="button-1">
-                                <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <img class="mask-group" src="{% static '/images/Rsass.png' %}" width="300" alt="Mask group"/> 
-                            <div class="icon-details-1">
-                                <div class="details-1">
-                                    <p class="headline manrope-semi-bold-cape-cod-25-1px">{{products.2.title}}</p>
-                                </div>
-                            </div>
-                            <div class="button-1">
-                                <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                            </div>
-                        </div>
-                        <div class="product-card">
-                            <img class="mask-group" src="{% static '/images/cpc_ge.png' %}" width="300" alt="Mask group"/> 
-                            <div class="icon-details-1">
-                                <div class="details-1">
-                                    <p class="headline manrope-semi-bold-cape-cod-25-1px">{{products.3.title}}</p>
-                                </div>
-                            </div>
-                            <div class="button-1">
-                                <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="button">

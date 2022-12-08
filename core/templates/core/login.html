@@ -1,3 +1,4 @@
+{% comment %} THIS FILE IS NOT BEING USED {% endcomment %}
 <!DOCTYPE html>
 
 <html>
@@ -19,7 +20,13 @@
                         </div>
                     </div>
                     <div class="right-column">
-                        <div class="item-2">My Account</div>
+                        <div class="item-2">
+                            {%if request.user.is_authenticated == True%}
+                            <a href="{% url 'myaccount' %}" style="color: black; text-decoration: none">My Account</a>
+                            {% else %}
+                            <a href="{% url 'login' %}" style="color: black; text-decoration: none">My Account</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
