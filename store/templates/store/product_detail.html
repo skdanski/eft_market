@@ -50,25 +50,27 @@
                 </div>
             </div>
             <div class="photo-text-section" style="padding: 60px">
-                {% comment %} todo: get usr uploaded item image {% endcomment %}
                 {%if product.image %}
                     <img class="img" src="{{product.image.url}}" alt="image-of-{{product.title}}" />
                 {% endif %}
                 <div class="text-1" style="padding: 50px">
                     <div class="title-and-text" style="gap: 8px">
                         <a href="{% url 'seller_detail' product.user.id %}">
-                        <div class="headline-1 montserrat-normal-cape-code-18px">Seller: <em>{{product.user.username}}</em></div>
-                    </a>
-                        <div>
+                            <div class="headline-1 montserrat-normal-cape-code-18px">Seller: <em>{{product.user.username}}</em></div>
+                        </a>
+                    <div>
                             <hr class="hr-1">
                         </div>
                         <div class="headline-1 manrope-extra-bold-black-40px">{{product.title}}</div>
-                        <p class="description manrope-bold-black-32-5px">
-                            ${{product.get_display_price}}
+                        <p class="description manrope-bold-cape-cod-20px" style="margin-top: 14px">
+                            Initial Price: ${{product.get_display_price}}<br>
+                            Current Price: ${{product.get_current_price}}<br>
+                            Trade Location: {{product.trade_location}}<br>
+                            Seller Phone Number: {{product.phone_num}}<br>
+                            Status: {{product.get_status_display}}<br>
+
                         </p>
-                        <p class="description montserrat-normal-black-18px">
-                            {{product.description}}
-                        </p>
+                        <p class="description montserrat-normal-black-18px">{{product.description}}</p>
                     </div>
                     <div class="button-1">
                         <div class="label-1 manrope-bold-trinidad-20px">Bid Now</div>

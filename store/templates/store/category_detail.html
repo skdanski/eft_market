@@ -51,72 +51,29 @@
                     </div>
                 </div>
             </div>
-            <div class="recommended">
-                <div class="products">
-                    {% for product in products|slice:"0:4" %}
-                        <div class="product-card">
-                            {% if product.image %}
-                            <img class="mask-group" src="{{product.image.url}}" width=300 alt="Mask group" />
-                            {%endif%}
-                            <div class="icon-details-1">
-                                <div class="details-1">
-                                    <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
-                                </div>
+
+            <div class="container">
+                {% for product in products %}
+                    <div class="a">
+                        {% if product.image %}
+                        <img class="mask-group" src="{{product.image.url}}" width=300 alt="Mask group" />
+                        {%endif%}
+                        <div class="icon-details-1">
+                            <div class="details-1">
+                                <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
+                                <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.get_display_price}}</p>
                             </div>
-                            <a href="{% url 'product_details' product.category.slug product.slug %}">
-                                <div class="button-1">
-                                    <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                    <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                                </div>
-                            </a>
                         </div>
-                    {% endfor %}
-                </div>
-                {%if products|length >= 4%}
-                    <div class="products">
-                        {% for product in products|slice:"4:8" %}
-                            <div class="product-card">
-                                {% if product.image %}
-                                <img class="mask-group" src="{{product.image.url}}" width=300 alt="Mask group" />
-                                {%endif%}
-                                <div class="icon-details-1">
-                                    <div class="details-1">
-                                        <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
-                                    </div>
-                                </div>
-                                <a href="{% url 'product_details' product.category.slug product.slug %}">
-                                    <div class="button-1">
-                                        <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                        <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                                    </div>
-                                </a>
+                        <a href="{% url 'product_details' product.category.slug product.slug %}">
+                            <div class="button-1">
+                                <div class="label-1 manrope-bold-trinidad-20px">Go to Listing</div>
+                                <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
                             </div>
-                        {% endfor %}
+                        </a>
                     </div>
-                {%endif%}
-                {%if products|length >= 8 %}
-                    <div class="products">
-                        {% for product in products|slice:"8:12" %}
-                            <div class="product-card">
-                                {% if product.image %}
-                                <img class="mask-group" src="{{product.image.url}}" width=300 alt="Mask group" />
-                                {%endif%}
-                                <div class="icon-details-1">
-                                    <div class="details-1">
-                                        <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
-                                    </div>
-                                </div>
-                                <a href="{% url 'product_details' product.category.slug product.slug %}">
-                                    <div class="button-1">
-                                        <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                        <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                                    </div>
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div> 
-                {% endif %}
+                {% endfor %}
             </div>
+
             <div class="footer">
                 <div class="body">
                     <div class="1">

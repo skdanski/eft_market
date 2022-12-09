@@ -50,28 +50,28 @@
                 </div>
             </div>
             <div class="manrope-extra-bold-black-32-5px">
-                <h1 style="align-items: center">{{user.username}}'s Page</h1>
+                <h1 style="align-items: center; color: var(--tertiary)"><em>{{user.username}}</em>'s Listings</h1>
             </div>
             <div style="height:20px"></div>
             <div class="recommended">
-                <div class="products">
-                    {% for product in user.products.all %}
-                        <div class="product-card">
-                            {% if product.image %}
-                            <img class="mask-group" src="{{product.image.url}}" width=300 alt="Mask group" />
-                            {%endif%}
-                            <div class="icon-details-1">
-                                <div class="details-1">
-                                    <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
-                                </div>
+                <div class="container">
+                    {% for product in products %}
+                    <div class="a">
+                        {% if product.image %}
+                        <img class="mask-group" src="{{product.image.url}}" width=300 alt="Mask group" />
+                        {%endif%}
+                        <div class="icon-details-1">
+                            <div class="details-1">
+                                <p class="headline manrope-semi-bold-cape-cod-25-1px">{{product.title}}</p> 
                             </div>
-                            <a href="{% url 'product_details' product.category.slug product.slug %}">
-                                <div class="button-1">
-                                    <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
-                                    <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
-                                </div>
-                            </a>
                         </div>
+                        <a href="{% url 'product_details' product.category.slug product.slug %}">
+                            <div class="button-1">
+                                <div class="label-1 manrope-bold-trinidad-20px">See Details</div>
+                                <img class="essential-icons-right-arrow" src="{% static '/images/orange_right_arrow.png' %}" alt="Essential Icons / right-arrow"/>
+                            </div>
+                        </a>
+                    </div>
                     {% endfor %}
                 </div>
             </div>

@@ -5,13 +5,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Login</title>
+        <title>{{title}}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{% static '/stylesheet.css' %}">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class ="homepage screen" style="min-height: 0px">
+        <div class ="homepage" style="min-height: 0px">
             <div class="nav-bars">
                 <div class="content">
                     <div class="left-column">
@@ -51,20 +52,21 @@
                     </div>
                 </div>
             </div>
-            <div class="recomanded" style="padding-top: 50px; gap: 0px">
-                <h1 class="manrope-bold-black-32-5px" style="align-item: center"> Welcome! </h1>
-                <form method="post" action="." class="manrope-bold-cape-cod-20px">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <button class="button" style="padding: 8px 16px;">
-                        <span class="manrope-bold-cape-cod-20px">Login</span>
-                    </button>
-                    <hr>
-                    <a href="{% url 'signup' %}" class="button" style="padding: 8px 16px; position: absolute; display: inline;">
-                        <span class="manrope-bold-cape-cod-20px">Sign Up</span>
-                    </a>
-                </form>
-            </div>
+
+            <h1 class="manrope-bold-trinidad-20px" style="font-size: 30px">{{title}}</h1>
+            <form method="post" action="." enctype="multipart/form-data" class="space-y-5">
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <button class="button" style="padding: 8px">
+                    <div class="label manrope-bold-cape-cod-20px">Submit</div>
+                </button>
+                {% if title == 'Edit Product' %}
+                <a href="{% url 'delete_product' product.id %}" class="button" style="padding: 8px">
+                    <div class="label manrope-bold-cape-cod-20px">Delete Product</div>
+                </a>
+                {% endif %}
+            </form>
             <div class="footer">
                 <div class="body">
                     <div class="1">
@@ -74,7 +76,6 @@
                         <div class="about">
                             <div class="place manrope-normal-alto-14px">Contact</div>
                         </div>
-                        <!-- todo: img src -->
                         <img class="social-links" src="{% static '/images/instagram.png' %}" alt="Social Links" />
                         <img class="social-links" src="{% static '/images/twitter.png' %}" alt="Social Links" />
                         <div class="copyright manrope-normal-alto-14px">©EFT_Market 2022</div>
@@ -100,4 +101,6 @@
                     </div>
                 </div> 
             </div>
-        </div>{% comment %}end of homepage screen {% endcomment %}
+        </div>
+    </body>
+</html>

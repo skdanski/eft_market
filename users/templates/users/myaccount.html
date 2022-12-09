@@ -51,9 +51,10 @@
                     </div>
                 </div>
             </div>
-        <div>
-            <a href="{% url 'logout' %}" class="button">
-                <span class ="manrope-bold-cape-cod-20px">Logout</span>  
-            </a>
-        </div>
+            <div class="container">
+                <span class="manrope-bold-black-32-5px">Welcome back </span> <span class="manrope-bold-trinidad-20px" style="font-size: 32.5px">{{user.username}}</span>
+                <a href="{% url 'logout' %}" class="button">
+                    <span class ="manrope-bold-cape-cod-20px">Logout</span>  
+                </a>
+            </div>
         </div>{% comment %}end of homepage screen {% endcomment %}
