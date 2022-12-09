@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load menu %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{product.title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static '/stylesheet.css' %}">
+    </head>
+    <body>
+        <div class ="homepage screen" style="min-height: 0px">
+            <div class="nav-bars">
+                <div class="content">
+                    <div class="left-column">
+                        <div class="logo manrope-bold-black-32-5px">
+                            <a href="{% url 'mainpage' %}" style="text-decoration: none">
+                                <span class="manrope-bold-black-32-5px">EFT_MARKET</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <div class="item-2">
+                            {%if request.user.is_authenticated == True%}
+                            <a href="{% url 'myaccount' %}" style="color: black; text-decoration: none">My Account</a>
+                            {% else %}
+                            <a href="{% url 'login' %}" style="color: black; text-decoration: none">My Account</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-bar">
+                {% menu %}
+                <div class ="right-column-1">
+                    <div class="frame-19">
+                        <img class="group" src="{% static 'images/search.png' %}" alt="search-icon" />
+                        <div class="label-2">Search</div>
+                    </div>
+                    <img class="vector" src="{% static '/images/wishlist.png' %}" alt="Vector"/>
+                    <div class="group-20">
+                        <div class="overlap-group">
+                            <img class="group-1" src="{% static '/images/bag.png' %}" alt="Group" />
+                            <div class="rectangle-14"></div>
+                            <div class="number">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for item in cart %}
+                <p>
+                    <b>Item Name: </b>{{item.product.title}}<br>
+                    <b>Quantity: </b>{{item.quantity}} <br>
+                    <a href="{% url 'remove_from_cart' item.product.id %}" class="button">Remove from cart</a>
+                </p>
+            {%endfor%}
+            Total cost: {{cart.get_total_cost}}

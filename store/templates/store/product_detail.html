@@ -73,9 +73,10 @@
                         <p class="description montserrat-normal-black-18px">{{product.description}}</p>
                     </div>
                     <div class="button-1">
-                        <div class="label-1 manrope-bold-trinidad-20px">Bid Now</div>
+                        <div class="button manrope-bold-trinidad-20px">Bid Now</div>
                         {% comment %} todo: implement bid button {% endcomment %}
                     </div>
+                    <a href= "{% url 'add_to_cart' product.id %}" class="button manrope-bold-trinidad-20px">Add to Cart</a>
                 </div>
             </div>
 
